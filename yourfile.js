@@ -1,12 +1,24 @@
+
 const container = document.querySelector('div.container')
 let count = 0;
 const btn = document.createElement('button')
 btn.textContent='reset'
 newGame(16)
 container.appendChild(btn)
-const mid =  document.querySelector('#r1 #g8 ')
-//mid.setAttribute('style','background: red;')
-//mid.appendChild(btn)
+
+
+const colour = document.createElement('button')
+colour.textContent = 'Colorful'
+colour.setAttribute('style','transform: translate( -150%);')
+container.appendChild(colour)
+
+
+const fading = document.createElement('button')
+fading.textContent = 'Fading'
+fading.setAttribute('style','transform: translate(50%);')
+container.appendChild(fading)
+
+
 function newGame(grid) {
     container.innerHTML='';
     for (let i =1;i<=grid;i++){
@@ -49,6 +61,10 @@ function click(){
     }
     newGame(promp)
     container.appendChild(btn)
+    container.appendChild(fading)
+    container.appendChild(colour)
+    i =0;
+
 }
 btn.addEventListener('click',click)
 
