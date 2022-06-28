@@ -4,18 +4,30 @@
 <meta charset="utf-8">
 <title>CSS Overlaying One DIV over Another DIV</title>
 <style> 
+    *{
+        margin: 0;padding: 0;border: 0;box-sizing: border-box;
+    }
+    .container{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+
+    }
+    
     .box{
-        width: 100px;
+        flex-grow: 1;
         height: 100px;
-        position: fixed;
-        top: 50%;
-        left: 50%;
+        width: 100%;
+
     }
 
 </style>
 </head>
 <body>
+    <div class="container">
     <div class="box" style="background: red;"></div>
-    
+    <div class="box" style="background: red;"></div>
+    <div class="box" style="background: red;"></div>
+    </div>
 </body>
 </html>
