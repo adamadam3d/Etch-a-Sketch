@@ -9,12 +9,13 @@ body{
 }
 button{
 
-    background-color: rgba(0, 0, 0, 0);
+    background-color: white;
     border: 1px solid black;
     position: fixed;
     top: 0%;
     left: 50%;
     transform: translate( -50%);
+    padding: 2px;
 
 }
 
@@ -33,11 +34,13 @@ button{
 }
 
 .grid{
+    background-color: white;
     display: flexbox;
     flex: 1;
 
 
 }
 .hover{
-    background-color: blanchedalmond;
+    background-color: black;
+    filter: brightness(50%);
 }

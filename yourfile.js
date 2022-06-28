@@ -20,12 +20,22 @@ function newGame(grid) {
             grid.classList.add('grid')
             row.appendChild(grid)
             grid.setAttribute('id',`g${x}`)
-            grid.addEventListener("mouseover",ran)
+            grid.addEventListener("mouseover",bla)
     
         }
     }
 }
+let i = 0;
 
+
+function bla(){
+
+    this.setAttribute('style',`filter: brightness(${100-i}%);`)
+
+    console.log(i)
+    i+=1;
+
+}
 
 function ran(){
     let col = Math.floor(Math.random()*16777215).toString(16);
