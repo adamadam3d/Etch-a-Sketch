@@ -20,10 +20,15 @@ function newGame(grid) {
             grid.classList.add('grid')
             row.appendChild(grid)
             grid.setAttribute('id',`g${x}`)
-            grid.addEventListener("mouseover",()=>grid.classList.add('hover'))
+            grid.addEventListener("mouseover",ran)
     
         }
     }
+}
+function ran(){
+    let col = Math.floor(Math.random()*16777215).toString(16);
+    this.style.backgroundColor ="#" + col;
+
 }
 function click(){
     let promp = prompt('new grid (under 100)')
