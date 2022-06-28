@@ -1,0 +1,40 @@
+*{
+    margin: 0;padding: 0;border: 0;box-sizing: border-box;
+}
+
+body{
+    border: 0px solid black;
+    height: 100vh;
+    width: 100vw;
+}
+button{
+
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid black;
+    position: fixed;
+    top: 0%;
+    left: 50%;
+    transform: translate( -50%);
+
+}
+
+.container{
+
+
+}
+
+.row{
+    display: flex;
+    height: 6.25vh;
+    width: 100vw;
+}
+
+.grid{
+    display: flexbox;
+    flex: 1;
+
+
+}
+.hover{
+    background-color: blanchedalmond;
+}
