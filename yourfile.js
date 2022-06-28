@@ -25,12 +25,16 @@ function newGame(grid) {
         }
     }
 }
+
+
+
 function click(){
     let promp = prompt('new grid (under 100)')
     while (promp>=100 || !(promp) ){
         promp = prompt('needs to less')
     }
     newGame(promp)
+    container.appendChild(btn)
 }
 btn.addEventListener('click',click)
 
