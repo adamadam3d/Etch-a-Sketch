@@ -1,14 +1,28 @@
 
 const container = document.querySelector('div.container')
+const touch = document.querySelector('.touch');
+
 let count = 0;
 const btn = document.createElement('button')
 btn.textContent='reset'
 let size = 16;
 newGame(size)
 const grids = document.querySelectorAll('.grid')
-container.appendChild(btn)
-grids.forEach((grid)=>grid.addEventListener("mouseover",()=>grid.style.backgroundColor='black'))
-
+container.appendChild(btn);
+grids.forEach((grid)=>grid.addEventListener("mouseover",()=>{
+    grid.style.backgroundColor='black';
+    console.log("test2");
+}));
+grids.forEach((grid)=>grid.addEventListener("ontouchstart",(e)=>{
+    e.target.style.backgroundColor='black';
+    console.log("test");
+}));
+  
+touch.addEventListener('ontouchmove',e=>{
+  let x =e.touches[0].clientX;
+  let y = e.touches[0].clientY;
+  console.log(x+","+y);
+});
 
 const colour = document.createElement('button')
 colour.textContent = 'Colorful'
@@ -55,6 +69,10 @@ function bla(){
         grid.setAttribute('style',`filter: brightness(${100-i}%);`);
         i+=1
     }));
+    grids.forEach((grid)=>grid.addEventListener("ontouchstart",(e)=>{
+        e.target.setAttribute('style',`filter: brightness(${100-i}%);`);
+        i+=1
+    }));
     fading.setAttribute('style','transform: translate(50%);')
     container.appendChild(fading)
     
@@ -67,6 +85,7 @@ function ran(){
     this.style.backgroundColor ="#" + col;
     const grids = document.querySelectorAll('.grid')
     grids.forEach((grid)=>grid.addEventListener("mouseover",ran))
+    grids.forEach((grid)=>grid.addEventListener("ontouchstart",ran))
 }
 function click(){
     let promp = prompt('new grid (under 100)')
@@ -74,6 +93,7 @@ function click(){
         promp = prompt('needs to less')
     }
     newGame(promp)
+  size = promp
     container.appendChild(btn)
     container.appendChild(fading)
     container.appendChild(colour)
@@ -81,6 +101,7 @@ function click(){
     const grids = document.querySelectorAll('.grid')
 
     grids.forEach((grid)=>grid.addEventListener("mouseover",()=>grid.style.backgroundColor='black'))
+    grids.forEach((grid)=>grid.addEventListener("ontouchstart",(e)=>e.target.style.backgroundColor='black'))
 
 
 }
