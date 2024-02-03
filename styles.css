@@ -51,3 +51,7 @@ button{
   height:100%;
   position: absolute;
 }
+
+button{
+    z-index: 5;
+}

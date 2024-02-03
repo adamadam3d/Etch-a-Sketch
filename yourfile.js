@@ -5,7 +5,7 @@ const touch = document.querySelector('.touch');
 let count = 0;
 const btn = document.createElement('button')
 btn.textContent='reset'
-let size = 16;
+let size = 10;
 newGame(size)
 const grids = document.querySelectorAll('.grid')
 container.appendChild(btn);
@@ -13,16 +13,36 @@ grids.forEach((grid)=>grid.addEventListener("mouseover",()=>{
     grid.style.backgroundColor='black';
     console.log("test2");
 }));
-grids.forEach((grid)=>grid.addEventListener("ontouchstart",(e)=>{
+grids.forEach((grid)=>grid.addEventListener("touchmove",(e)=>{
     e.target.style.backgroundColor='black';
     console.log("test");
 }));
-  
-touch.addEventListener('ontouchmove',e=>{
-  let x =e.touches[0].clientX;
-  let y = e.touches[0].clientY;
-  console.log(x+","+y);
+console.log(grids);
+
+touch.addEventListener("touchmove",(e)    =>{
+    const grid =document.querySelector('.grid');
+    const grids = document.querySelectorAll('.grid');
+    let x =e.touches[0].clientX;
+    let y = e.touches[0].clientY;
+    const width = container.offsetWidth;
+    const height = container.offsetHeight;
+    grids[(Math.floor(x/(grid.offsetWidth)))+size*Math.floor(((y/(grid.offsetHeight))))].style.backgroundColor='black';
 });
+
+touch.addEventListener("touchstart",(e)    =>{
+    const grid =document.querySelector('.grid');
+    const grids = document.querySelectorAll('.grid');
+    let x =e.touches[0].clientX;
+    let y = e.touches[0].clientY;
+    const width = container.offsetWidth;
+    const height = container.offsetHeight;
+    console.log(Math.floor(height/grid.offsetHeight))
+    console.log((Math.floor(x/(grid.offsetWidth)))+", "+Math.floor(height/grid.offsetHeight)*Math.floor((2*(y/(grid.offsetHeight)))));
+
+    //grids[(x/(grid.offsetWidth))+(2*(y/(grid.offsetHeight)))].style.backgroundColor='black';
+    grids[(Math.floor(x/(grid.offsetWidth)))+Math.floor(height/grid.offsetHeight)*Math.floor(((y/(grid.offsetHeight))))].style.backgroundColor='black';
+});
+
 
 const colour = document.createElement('button')
 colour.textContent = 'Colorful'
@@ -84,9 +104,7 @@ function ran(){
     let col = Math.floor(Math.random()*16777215).toString(16);
     this.style.backgroundColor ="#" + col;
     const grids = document.querySelectorAll('.grid')
-    grids.forEach((grid)=>grid.addEventListener("mouseover",ran))
-    grids.forEach((grid)=>grid.addEventListener("ontouchstart",ran))
-}
+    grids.forEach((grid)=>grid.addEventListener("mouseover",ran))}
 function click(){
     let promp = prompt('new grid (under 100)')
     while (promp>=100){
@@ -101,8 +119,6 @@ function click(){
     const grids = document.querySelectorAll('.grid')
 
     grids.forEach((grid)=>grid.addEventListener("mouseover",()=>grid.style.backgroundColor='black'))
-    grids.forEach((grid)=>grid.addEventListener("ontouchstart",(e)=>e.target.style.backgroundColor='black'))
-
 
 }
 btn.addEventListener('click',click)
