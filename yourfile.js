@@ -26,9 +26,10 @@ touch.addEventListener("touchmove",(e)    =>{
     let y = e.touches[0].clientY;
     const width = container.offsetWidth;
     const height = container.offsetHeight;
+    console.log(grids)
     grids[(Math.floor(x/(grid.offsetWidth)))+size*Math.floor(((y/(grid.offsetHeight))))].style.backgroundColor='black';
 });
-
+/*
 touch.addEventListener("touchstart",(e)    =>{
     const grid =document.querySelector('.grid');
     const grids = document.querySelectorAll('.grid');
@@ -42,12 +43,15 @@ touch.addEventListener("touchstart",(e)    =>{
     //grids[(x/(grid.offsetWidth))+(2*(y/(grid.offsetHeight)))].style.backgroundColor='black';
     grids[(Math.floor(x/(grid.offsetWidth)))+Math.floor(height/grid.offsetHeight)*Math.floor(((y/(grid.offsetHeight))))].style.backgroundColor='black';
 });
-
+*/
 
 const colour = document.createElement('button')
 colour.textContent = 'Colorful'
 colour.setAttribute('style','transform: translate( -150%);')
-colour.addEventListener('click',ran)
+colour.addEventListener('click',e=>{
+    ran(e);
+    grids = document.querySelectorAll('.grid');
+})
 container.appendChild(colour)
 
 
@@ -76,7 +80,7 @@ function newGame(grid) {
     
         }
     }
-    
+    //grids = document.querySelectorAll('.grid');
 }
 let i = 0;
 
@@ -84,15 +88,12 @@ let i = 0;
 function bla(){
 
     this.setAttribute('style',`filter: brightness(${100-i}%);`)
-    const grids = document.querySelectorAll('.grid')
+    grids = document.querySelectorAll('.grid')
     grids.forEach((grid)=>grid.addEventListener("mouseover",()=>{
         grid.setAttribute('style',`filter: brightness(${100-i}%);`);
         i+=1
     }));
-    grids.forEach((grid)=>grid.addEventListener("ontouchstart",(e)=>{
-        e.target.setAttribute('style',`filter: brightness(${100-i}%);`);
-        i+=1
-    }));
+
     fading.setAttribute('style','transform: translate(50%);')
     container.appendChild(fading)
     
@@ -100,11 +101,14 @@ function bla(){
 
 }
 
-function ran(){
+function ran(e){
     let col = Math.floor(Math.random()*16777215).toString(16);
-    this.style.backgroundColor ="#" + col;
-    const grids = document.querySelectorAll('.grid')
-    grids.forEach((grid)=>grid.addEventListener("mouseover",ran))}
+    e.target.style.backgroundColor ="#" + col;
+    //
+    const gr = document.querySelectorAll('.grid');
+    gr.forEach((grid)=>grid.addEventListener("mouseover",ran))
+}
+
 function click(){
     let promp = prompt('new grid (under 100)')
     while (promp>=100){
@@ -116,8 +120,7 @@ function click(){
     container.appendChild(fading)
     container.appendChild(colour)
     i =0;
-    const grids = document.querySelectorAll('.grid')
-
+    const grids = document.querySelectorAll('.grid');
     grids.forEach((grid)=>grid.addEventListener("mouseover",()=>grid.style.backgroundColor='black'))
 
 }
